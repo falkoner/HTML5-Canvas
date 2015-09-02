@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas Exercises</title>
+</head>
+<body>
+  <canvas id="c" width="500" height="500"></canvas>
+  <canvas id="d" width="500" height="500"></canvas>
+  <script>
+  var c = document.querySelector("#c");
+  var ctx = c.getContext("2d");
+
+  // basic shape
+  ctx.fillRect(200,200,100,100);
+  ctx.strokeRect(150,150,50,50);
+
+  // "pen" drawing
+  ctx.fillStyle = "blue";
+  // Start at (0,0) and draw a 50px x 50px blue rectangle.
+  ctx.fillRect(150,150,50,50);
+  // Start at (0,0) and clear a 25px x 25px rectangle.
+  ctx.clearRect(150,150,25,25);
+
+  ctx.fillStyle = "grey";
+  ctx.strokeStyle = "#33CC33";
+  ctx.strokeRect(50,50,100,100);
+  ctx.beginPath();
+  ctx.moveTo(75,75);
+  ctx.lineTo(125,75);
+  ctx.lineTo(125,125);
+  ctx.lineTo(75,75);
+  ctx.closePath();
+  ctx.fill();
+
+  // example with state save/restore
+  var d = document.querySelector("#d");
+  var ctx = d.getContext("2d");
+
+  ctx.fillStyle = "blue";
+  ctx.fillRect(0,0,50,50);
+
+  // Save state with blue fill
+  ctx.save();
+  ctx.fillStyle = "green";
+  ctx.fillRect(100,100,10,10);
+  // Restore to blue fill
+  ctx.restore();
+
+  ctx.fillRect(200,10,20,20);
+
+  // add text
+  ctx.font = "36pt Impact";
+  ctx.textAlign = "center";
+  ctx.lineWidth = 3;
+  ctx.strokeText("Big long TEXT", c.width/2, 200);
+
+  </script>
+</body>
+</html>
